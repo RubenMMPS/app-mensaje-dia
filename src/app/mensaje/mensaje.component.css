@@ -1,0 +1,97 @@
+/* Fondo de la página */
+.fondo-pagina {
+  min-height: 100vh;
+  padding: 20px;
+  background: linear-gradient(to bottom right, #ffe1e1, #fbc2eb);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Contenedor general */
+.contenedor-principal {
+  width: 100%;
+  max-width: 700px;
+  text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Introducción */
+.intro {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  margin-bottom: 30px;
+}
+
+.intro-titulo {
+  font-size: 2rem;
+  color: #d63384;
+  margin-bottom: 10px;
+}
+
+.intro-texto {
+  font-size: 1.2rem;
+  color: #444;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+/* Botón */
+.boton-mensaje {
+  background-color: #d63384;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.boton-mensaje:hover {
+  background-color: #b0256c;
+}
+
+/* Mensaje del día */
+.contenedor-mensaje {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.titulo {
+  font-size: 1.8rem;
+  color: #ff7f50;
+  margin-bottom: 20px;
+}
+
+.mensaje {
+  font-size: 1.3rem;
+  color: #333;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  font-style: italic;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .intro-texto,
+  .mensaje {
+    font-size: 1.1rem;
+  }
+
+  .intro-titulo,
+  .titulo {
+    font-size: 1.5rem;
+  }
+
+  .boton-mensaje {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
