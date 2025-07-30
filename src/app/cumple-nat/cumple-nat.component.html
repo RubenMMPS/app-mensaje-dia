@@ -1,0 +1,79 @@
+<!-- Etapa 1: Lluvia de globos -->
+<div *ngIf="currentStage === 'balloons'" class="stage balloons-stage">
+  <div
+    class="balloon"
+    *ngFor="let balloon of balloons"
+    [style.left.px]="balloon.x"
+    [style.top.px]="balloon.y"
+    [style.width.px]="balloon.size"
+    [style.height.px]="balloon.size * 1.25"
+    [style.background]="balloon.color"
+  ></div>
+
+  <div class="message">
+    <h1>¡Feliz Cumpleaños Natalia!</h1>
+    <p>Haz clic en la carta que aparece...</p>
+  </div>
+
+  <div class="secret-letter-trigger" (click)="openLetter()"></div>
+</div>
+<!-- Audio oculto (fuera de condiciones *ngIf) -->
+<audio #birthdayAudio src="assets/cumple/audio/birthday-song.mp3" loop></audio>
+
+<!-- Etapa 2: Carta secreta -->
+<div *ngIf="currentStage === 'letter'" class="stage letter-stage">
+  <div
+    class="letter"
+    [@openLetter]="letterOpened ? 'opened' : 'closed'"
+    [class.opened]="letterOpened"
+    (@openLetter.done)="onLetterOpened()"
+  >
+    <div class="letter-content" style="text-align: center">
+      <h2>Para Natalia:</h2>
+      <p>¡En tu día especial quería recordarte lo increíble que eres!</p>
+      <p>Eres la mejor amiga que alguien podría desear...</p>
+    </div>
+  </div>
+</div>
+
+<!-- Etapa 3: Álbum de fotos -->
+<div class="fondo">
+  <div *ngIf="currentStage === 'photos'" class="stage book-stage">
+    <div class="book-page">
+      <div class="images">
+        <!-- Si hay vídeo -->
+        <video
+          *ngIf="bookPages[currentPageIndex].video"
+          [src]="bookPages[currentPageIndex].video"
+          controls
+          autoplay
+          muted
+          loop
+          style="max-width: 100%; border-radius: 8px"
+        ></video>
+
+        <!-- Si hay imágenes -->
+        <img
+          *ngFor="let img of bookPages[currentPageIndex].images || []"
+          [src]="img"
+          alt="Recuerdo"
+        />
+      </div>
+
+      <p class="page-text">{{ bookPages[currentPageIndex].text }}</p>
+    </div>
+
+    <div class="book-controls">
+      <button (click)="goToPreviousPage()" [disabled]="currentPageIndex === 0">
+        ◀ Anterior
+      </button>
+      <span>Página {{ currentPageIndex + 1 }} / {{ bookPages.length }}</span>
+      <button
+        (click)="goToNextPage()"
+        [disabled]="currentPageIndex === bookPages.length - 1"
+      >
+        Siguiente ▶
+      </button>
+    </div>
+  </div>
+</div>

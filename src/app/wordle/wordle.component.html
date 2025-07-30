@@ -1,0 +1,125 @@
+<div class="wordle-container">
+  <h2>Escribe aquí tus intentos</h2>
+
+  <!-- Tablero -->
+  <div class="tablero">
+    <!-- Pista visual con blur desde el principio -->
+    <div
+      *ngIf="modoPista === 'blur' && intentos.length > 0"
+      class="pista-visual"
+    >
+      <p>
+        <strong>Pista (Intento {{ intentos.length }}/5):</strong>
+      </p>
+      <img
+        [src]="'assets/fotos/' + diaActual + '.jpg'"
+        alt="Pista progresiva"
+        [style]="getBlurStyle()"
+        class="pista-img"
+      />
+    </div>
+
+    <!-- Pista visual solo después del tercer intento -->
+    <div *ngIf="modoPista === 'despuesDeTres'" class="tema">
+      <p>
+        <strong>Tema: </strong>
+        <br />
+        <span *ngIf="tema">{{ tema }}</span>
+      </p>
+    </div>
+    <div
+      *ngIf="modoPista === 'despuesDeTres' && intentos.length >= 3"
+      class="pista-visual"
+    >
+      <p>
+        <strong>Pista visual:</strong>
+      </p>
+      <img
+        [src]="'assets/fotos/' + diaActual + '.jpg'"
+        alt="Pista del día"
+        style="max-width: 100%; border-radius: 8px"
+        class="pista-img"
+      />
+    </div>
+
+    <!-- Intento actual solo si no hay mensaje final y quedan intentos -->
+    <div class="fila" *ngIf="!mensajeFinal && intentos.length < 5">
+      <ng-container *ngFor="let letra of intentoActual.split('')">
+        <div *ngIf="letra !== ' '; else espacio" class="letra vacia">
+          {{ letra }}
+        </div>
+        <ng-template #espacio>
+          <div class="letra espacio"></div>
+        </ng-template>
+      </ng-container>
+      <ng-container
+        *ngFor="
+          let i of [].constructor(fraseSecreta.length - intentoActual.length);
+          let idx = index
+        "
+      >
+        <ng-container
+          *ngIf="fraseSecreta[intentoActual.length + idx] === ' '; else vacia"
+        >
+          <div class="letra espacio"></div>
+        </ng-container>
+        <ng-template #vacia>
+          <div class="letra vacia"></div>
+        </ng-template>
+      </ng-container>
+    </div>
+
+    <br /><br />
+
+    <!-- Intentos anteriores -->
+    <div *ngFor="let intento of intentos" class="fila">
+      <div
+        *ngFor="let item of intento.letras"
+        class="letra"
+        [class.correcto]="item.estado === 'correcto'"
+        [class.presente]="item.estado === 'presente'"
+        [class.ausente]="item.estado === 'ausente'"
+      >
+        {{ item.letra }}
+      </div>
+    </div>
+
+    <!-- Filas vacías -->
+    <div
+      *ngFor="
+        let fila of [].constructor(
+          5 - intentos.length - (!mensajeFinal && intentos.length < 5 ? 1 : 0)
+        )
+      "
+      class="fila"
+    >
+      <ng-container
+        *ngFor="let i of [].constructor(fraseSecreta.length); let idx = index"
+      >
+        <ng-container *ngIf="fraseSecreta[idx] === ' '; else vacia">
+          <div class="letra espacio"></div>
+        </ng-container>
+        <ng-template #vacia>
+          <div class="letra vacia"></div>
+        </ng-template>
+      </ng-container>
+    </div>
+
+    <!-- Controles -->
+    <div class="controles" *ngIf="!mensajeFinal">
+      <input
+        [(ngModel)]="intentoActual"
+        (keyup.enter)="adivinar()"
+        [maxlength]="fraseSecreta.length"
+        placeholder="Escribe aquí"
+      />
+      <button (click)="adivinar()">Probar</button>
+    </div>
+
+    <!-- Resultado -->
+    <div *ngIf="mensajeFinal" class="resultado">
+      <h3>{{ mensajeFinal }}</h3>
+      <button (click)="reiniciar()">Jugar otra vez</button>
+    </div>
+  </div>
+</div>

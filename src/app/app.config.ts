@@ -1,8 +1,14 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter } from '@angular/router';
+// app.config.ts
+import { provideRouter, Routes } from '@angular/router';
+import { MensajeComponent } from './mensaje/mensaje.component';
+import { CumpleNatComponent } from './cumple-nat/cumple-nat.component';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
-import { routes } from './app.routes';
+const routes: Routes = [
+  { path: '', component: MensajeComponent },
+  { path: 'cumple', component: CumpleNatComponent },
+];
 
-export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes)]
+export const appConfig = {
+  providers: [provideRouter(routes), provideAnimations()],
 };

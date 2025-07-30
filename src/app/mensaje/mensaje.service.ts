@@ -21,6 +21,8 @@ function obtenerDiaDelAño(): number {
 export const MENSAJES_DEL_DIA: string[] = [
   "'Eres como una sentencia bien fundamentada: justa, clara e inspiradora. ⚖️❤️'",
   "'Tu voz importa, menos cuando corriges mi técnica en el gym 🎤'",
+  "'Eres la razón por la que creo en milagros'",
+  "'Eres la chispa que enciende mi motivación 🔥 (y a veces mi corazón cuando me miras)'",
   "'Eres esa tirita de amor que cura todas mis heridas 💊'",
   "'Hoy es un buen día para echarte de menos 🧘‍♀️'",
   "'Cada pequeño paso cuenta para llegar a la meta 🚶‍♂️ (en mi caso cuenta la mitad)'",
@@ -33,7 +35,7 @@ export const MENSAJES_DEL_DIA: string[] = [
   "'Eres suficiente, tal y como eres 🌻'",
   "'Sin ti los tragos no son lo mismo, no tengo con quien meterme ahora 🍹'",
   "'Si ya sabía yo que invertir en mi era una buena idea, quien ha hecho una página web solo para ti aparte de mi? 💰 (espero que nadie porque sino estoy jodido)'",
-  "'Me he esforzado mucho para hacer esta página, imagina lo mucho que me importas ❤️'",
+  "'He escrito más líneas de código que mensajes en tu chat... pero en ambas, pienso en ti. 💌'",
   "'Si extrañarte fuera un arte haría cuadros con tu cara que valdrían un millón 🎨'",
   "'Eres más fuerte de lo que crees 🐯 (sobretodo en hip thrust)'",
   "'Te preocupas más por los demás que por ti misma y eso te define como persona ✨'",
@@ -46,6 +48,6 @@ export const MENSAJES_DEL_DIA: string[] = [
   "'No estás sola, tienes una página web hecha por un enano tetón 🤝'",
   "'Eres el ibuprofeno de mi alma: me quitas el dolor de existir (y a veces me das acidez) 💊'",
   "'Si la felicidad fuera un delito, yo sería inocente. Y tú, cómplice por abandonarme ⚖️'",
-  "'FELICIDADES PRINCESA!!!! Hoy no hay frase que seguramente te halla felicitado por md directamente. Pero por si se me ha olvidado te lo digo por aqui, te quiero un montón y eres lo mejor que me ha pasado en la vida no cambies 🎉'", // Añadido 🎉
+  "'FELICIDADES PRINCESA!!!! Hay un botón especial para hoy abajo de la página. Hoy no hay frase motivacional pero por si te sirve te digo que te quiero un montón y eres lo mejor que me ha pasado en la vida 🎉'",
   "'La vida es como un jurado: nunca escoge al más guapo (por eso seguimos solos)👨‍⚖️👩‍⚖️'",
 ];

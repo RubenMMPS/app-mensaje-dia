@@ -6,7 +6,7 @@ import { MensajeComponent } from './mensaje/mensaje.component'; // 👈 Importa 
 
 @Component({
   selector: 'app-root',
-  imports: [MensajeComponent],
+  imports: [RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })

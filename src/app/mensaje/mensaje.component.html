@@ -16,5 +16,14 @@
       <h2 class="titulo">💌 Mensaje del Día</h2>
       <p class="mensaje">{{ mensaje }}</p>
     </div>
+    <!-- Añade esto al final de tu mensaje.component.html -->
+    <div class="wordle-section">
+      <h2>¿Te atreves con el Wordle?</h2>
+      <app-wordle></app-wordle>
+    </div>
+
+    <button (click)="irAlCumple()" class="btn-cumple">
+      IR A LA CARTA DE CUMPLEAÑOS
+    </button>
   </div>
 </div>
